@@ -12,6 +12,11 @@ oc  create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/
 oc  create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-stage/02_subscription-dev.yaml
 oc  create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-stage/03_application-dev.yaml
 ```
+```
+oc create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-stage/all-stage.yaml
+```
+
+
 # create the prod env
 ```
 oc  create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-prod/00_namespace.yaml
@@ -21,4 +26,10 @@ oc  create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/
 ```
 ```
 oc create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-prod/all-prod.yaml
+```
+
+# clean up 
+```
+oc delete -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-prod/all-prod.yaml
+oc delete -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-stage/all-stage.yaml
 ```
