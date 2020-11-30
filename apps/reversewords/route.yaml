@@ -3,8 +3,6 @@ kind: Route
 metadata:
   annotations:
     openshift.io/host.generated: "true"
-  labels:
-    name: reverse-words
   name: reverse-words
 spec:
   port:
