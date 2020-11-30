@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  labels:
+    name: reverse-words
+  name: reverse-words
+spec:
+  port:
+    targetPort: web
+  to:
+    kind: Service
+    name: reverse-words
+    weight: 100
+  wildcardPolicy: None
+
