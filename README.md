@@ -32,4 +32,5 @@ oc create -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/m
 ```
 oc delete -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-prod/all-prod.yaml
 oc delete -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/reversewords-stage/all-stage.yaml
+oc delete -f https://raw.githubusercontent.com/NicolasO/acm-app-lifecycle-blog/master/acm-manifests/base/00_channel.yaml
 ```
