@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: reverse-words-prod
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: production-clusters
+  namespace: reverse-words-prod
+spec:
+  clusterConditions:
+    - type: "ManagedClusterConditionAvailable"
+      status: "True"
+  clusterSelector:
+    matchExpressions: []
+    matchLabels:
+      environment: "prod"
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: reversewords-pro-app-subscription
+  namespace: reverse-words-prod
+  labels:
+    app: reversewords-pro-app
+  annotations:
+    apps.open-cluster-management.io/git-path: apps/reversewords/
+    apps.open-cluster-management.io/git-branch: prod
+spec:
+  channel: open-cluster-management/acm-app-lifecycle-blog
+  placement:
+    placementRef:
+      kind: PlacementRule
+      name: production-clusters
+---
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: reversewords-pro-app
+  namespace: reverse-words-prod
+spec:
+  componentKinds:
+  - group: apps.open-cluster-management.io
+    kind: Subscription
+  descriptor: {}
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - reversewords-pro-app
