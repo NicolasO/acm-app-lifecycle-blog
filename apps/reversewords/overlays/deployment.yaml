@@ -12,5 +12,5 @@ spec:
         image: quay.io/mavazque/reversewords:v0.0.3
         env:
         - name: RELEASE
-          value: "Stage Release v0.0.3"
+          value: "Stage Release v0.0.3 done by Nico the 01/12"
         - $patch: replace
